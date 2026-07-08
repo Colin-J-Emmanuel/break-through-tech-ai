@@ -1,0 +1,28 @@
+# Python environment for the Machine Learning Foundations notebooks.
+# Originally run on Cornell Tech's JupyterHub; these are the libraries the
+# notebooks import across all units. Pinning is intentionally loose so the
+# notebooks stay runnable on modern Python (3.9+).
+
+# Core scientific stack
+numpy
+pandas
+scipy
+
+# Visualization
+matplotlib
+seaborn
+
+# Classical ML
+scikit-learn
+
+# Deep learning (Units 7 & 8)
+tensorflow
+keras
+
+# NLP (Unit 8)
+gensim          # word embeddings
+nltk            # text preprocessing
+
+# Notebook environment
+jupyterlab
+notebook
