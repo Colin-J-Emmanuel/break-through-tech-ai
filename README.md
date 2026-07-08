@@ -54,7 +54,7 @@ the team projects linked to their respective repositories.
 | Phase | Term | Focus | Format | Where to find it |
 |------|------|-------|--------|------------------|
 | **1 · ML Foundations** | Summer 2025 | Full ML life cycle: data prep → classical models → deep learning → NLP | Individual coursework | **This repository** ⤵ |
-| **2 · AI Studio — Ursa Space Systems** | Fall 2025 | SAR satellite-image classification (icebergs vs. vessels); transfer learning with ViT / ConvNeXT embeddings | Team (7 fellows) | [Ursa-Space-Systems-1B ↗](https://github.com/matheath9/Ursa-Space-Systems-1B) |
+| **2 · AI Studio — Ursa Space Systems** | Fall 2025 | SAR satellite-image classification (icebergs vs. vessels); transfer learning with ViT / ConvNeXT embeddings | Team (7 fellows) | [My notebooks ⤵](./ai-studio-fall-2025-ursa-space/) · [Team repo ↗](https://github.com/matheath9/Ursa-Space-Systems-1B) |
 | **3 · AI Studio — Kaggle Competition** | Spring 2026 | Data-science competition | Team | 🚧 *Repository coming soon — see [Phase 3](#phase-3--spring-data-science-competition-spring-2026)* |
 
 ---
@@ -163,7 +163,7 @@ If you only look at a few notebooks, start here:
 
 ## Phase 2 — AI Studio with Ursa Space Systems (Fall 2025)
 
-**🔗 Team repository: [matheath9/Ursa-Space-Systems-1B](https://github.com/matheath9/Ursa-Space-Systems-1B)**
+**📂 My notebooks in this repo: [`ai-studio-fall-2025-ursa-space/`](./ai-studio-fall-2025-ursa-space/)** · **🔗 Team repository: [matheath9/Ursa-Space-Systems-1B](https://github.com/matheath9/Ursa-Space-Systems-1B)**
 
 **Foundation Models for Satellite Image Intelligence — SAR Image Classification: Icebergs vs. Vessels**
 
@@ -179,11 +179,16 @@ Classifier dataset from Kaggle.
   0.9855** on the held-out set.
 - 3D PCA visualizations of the learned embedding spaces to analyze class separability.
 
-**My contributions:** model development and **embedding-visualization preparation** — the work
-of turning high-dimensional pretrained embeddings into analyzable, comparable representations
-so the team could reason about how well each approach separated the two classes.
+**My contributions:** model development and **embedding-visualization preparation** — building a
+baseline **MLP** classifier and turning high-dimensional pretrained (ViT) embeddings into
+analyzable, comparable representations so the team could reason about how well each approach
+separated the two classes. My authored notebooks (a fully-executed EDA + baseline + embeddings
+notebook, and a standalone MLP baseline) are in
+[`ai-studio-fall-2025-ursa-space/`](./ai-studio-fall-2025-ursa-space/), with details on what was
+mine versus the team's.
 
-*(The full write-up, figures, and per-member notebooks live in the team repository linked above.)*
+*(The full write-up, aggregate results, figures, and every member's notebooks live in the team
+repository linked above.)*
 
 ---
 
@@ -245,8 +250,12 @@ break-through-tech-ai/
 ├── unit-06-ensembles-and-unsupervised/
 ├── unit-07-deep-learning-and-computer-vision/
 ├── unit-08-nlp-and-capstone/
-└── unit-09-responsible-ml/
-    └── README.md                 ← theory unit (summary, no notebooks)
+├── unit-09-responsible-ml/
+│   └── README.md                 ← theory unit (summary, no notebooks)
+│
+└── ai-studio-fall-2025-ursa-space/   ← Phase 2: my Ursa Space team-project notebooks
+    ├── README.md                 ← project context + my specific contribution
+    └── notebooks/
 ```
 
 Every unit folder has its own `README.md` indexing that unit's notebooks with one-line
