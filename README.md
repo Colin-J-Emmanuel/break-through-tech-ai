@@ -19,7 +19,7 @@
   - [Unit-by-Unit Breakdown](#unit-by-unit-breakdown)
   - [Highlighted Work](#highlighted-work)
 - [Phase 2 — AI Studio with Ursa Space Systems](#phase-2--ai-studio-with-ursa-space-systems-fall-2025)
-- [Phase 3 — Spring Data-Science Competition](#phase-3--spring-data-science-competition-spring-2026)
+- [Phase 3 — WiDS Datathon: Wildfire Survival Forecasting](#phase-3--wids-datathon-wildfire-survival-forecasting-spring-2026)
 - [Skills Demonstrated](#skills-demonstrated)
 - [Repository Structure](#repository-structure)
 - [Reproducing This Work](#reproducing-this-work)
@@ -55,7 +55,7 @@ the team projects linked to their respective repositories.
 |------|------|-------|--------|------------------|
 | **1 · ML Foundations** | Summer 2025 | Full ML life cycle: data prep → classical models → deep learning → NLP | Individual coursework | **This repository** ⤵ |
 | **2 · AI Studio — Ursa Space Systems** | Fall 2025 | SAR satellite-image classification (icebergs vs. vessels); transfer learning with ViT / ConvNeXT embeddings | Team (7 fellows) | [My notebooks ⤵](./ai-studio-fall-2025-ursa-space/) · [Team repo ↗](https://github.com/matheath9/Ursa-Space-Systems-1B) |
-| **3 · AI Studio — Kaggle Competition** | Spring 2026 | Data-science competition | Team | 🚧 *Repository coming soon — see [Phase 3](#phase-3--spring-data-science-competition-spring-2026)* |
+| **3 · WiDS Datathon — Wildfire Survival** | Spring 2026 | Survival analysis: forecasting wildfire threat to evacuation zones (12/24/48/72h); ensembling + calibration | Team (3) | [Project repo ↗](https://github.com/Colin-J-Emmanuel/wildfire-survival-forecasting) |
 
 ---
 
@@ -192,13 +192,38 @@ repository linked above.)*
 
 ---
 
-## Phase 3 — Spring Data-Science Competition (Spring 2026)
+## Phase 3 — WiDS Datathon: Wildfire Survival Forecasting (Spring 2026)
 
-🚧 **In progress.** The spring AI Studio centers on a **team Kaggle data-science competition**.
-A dedicated repository is being prepared and will be linked here once it's ready.
+**🔗 Project repository: [Colin-J-Emmanuel/wildfire-survival-forecasting](https://github.com/Colin-J-Emmanuel/wildfire-survival-forecasting)**
 
-When that repo is live, this section will summarize the problem, our approach, my specific
-contributions, and the results — mirroring the structure of the Ursa Space phase above.
+**Predicting Time-to-Threat for Wildfire Evacuation Zones — WiDS Global Datathon 2026, Survival Analysis Track**
+
+For the Spring AI Studio, my three-person team entered the **Women in Data Science (WiDS) Global
+Datathon 2026**, run on Kaggle in partnership with the wildfire-safety nonprofit
+[Watch Duty](https://www.watchduty.org/). The task: given only the **first five hours** of a
+wildfire's behavior, forecast the probability it threatens a nearby evacuation zone within **12, 24,
+48, and 72 hours**. Because the outcomes are right-censored (many fires never reach a zone), it's a
+**survival-analysis** problem rather than plain classification.
+
+**Results:**
+- Improved the provided XGBoost Cox baseline from **0.87397 → 0.96366** (**+0.09**), clearing the
+  program's 0.90 target with margin.
+- **Leaderboard: 477 / 1754 teams (top ~27%)** in a public, worldwide competition.
+
+**What drove the gain:** early error analysis exposed that the baseline was **overconfident about
+distant fires** — assigning real hit-probability to fires 7–545 km away, even though no training fire
+ever reached a zone from beyond ~5 km. Correcting this was the biggest lever, through distance-aware
+feature engineering and, above all, **per-horizon probability calibration** (isotonic + Platt, chosen
+per horizon). The full enhancement stacked four things: **+20 engineered features**, a **cross-validated
+survival ensemble** (XGBoost Cox PH + Random Survival Forest + Gradient Boosted Survival Trees),
+**Optuna** hyperparameter tuning, and the calibration step.
+
+**My role:** modeling, enhancement, and reproducibility — one of three teammates who each contributed
+across the pipeline. The repository is engineered for reproducibility: a reusable `src/` package, a
+narrative walkthrough notebook and a self-contained Kaggle notebook both generated from the same source,
+and figures regenerated directly from the scoring submission.
+
+*(Full methodology, ablations, and exact reproduction steps are in the project repository linked above.)*
 
 ---
 
@@ -220,7 +245,10 @@ A map from skills to the notebooks that best evidence them:
 | **Natural language processing** | Unit 8 — text features, word embeddings, sentiment analysis |
 | **Responsible / fair ML** | Unit 9 — fairness metrics and accountability |
 | **Transfer learning & foundation models** | Ursa Space project — ViT / ConvNeXT embeddings |
-| **Team collaboration & reproducibility** | Ursa Space project; Git workflow across both repos |
+| **Survival analysis** | WiDS Datathon — Cox PH, Random Survival Forest, Gradient Boosted Survival Trees on right-censored data |
+| **Probability calibration** | WiDS Datathon — per-horizon isotonic regression & Platt scaling |
+| **Hyperparameter optimization & ensembling** | WiDS Datathon — Optuna (TPE) tuning, cross-validated ensemble weighting |
+| **Team collaboration & reproducibility** | Ursa Space & WiDS projects; reproducible `src/` pipeline; Git workflow across repos |
 
 ---
 
